@@ -1,6 +1,6 @@
 {
-  "name": "dam-bal/project",
-  "description": "Description",
+  "name": "dam-bal/laravel-command-bus",
+  "description": "Laravel Command Bus",
   "license": "MIT",
   "type": "library",
   "authors": [
