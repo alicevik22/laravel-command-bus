@@ -1,9 +1,9 @@
-Description
+Laravel Command Bus
 
 ## Install
 
 ```sh
-composer require dam-bal/project
+composer require dam-bal/laravel-command-bus
 ```
 
 ## Release History

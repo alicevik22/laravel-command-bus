@@ -11,19 +11,25 @@
   ],
   "autoload": {
     "psr-4": {
-      "VendorOrProject\\": "src/"
+      "LaravelCommandBus\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "VendorOrProject\\Tests\\": "tests/"
+      "LaravelCommandBus\\Tests\\": "tests/"
     }
   },
   "require": {
-    "php": "^8.2"
+    "php": "^8.2",
+    "illuminate/bus": "^10.0",
+    "illuminate/contracts": "^10.0",
+    "illuminate/queue": "^10.0",
+    "illuminate/support": "^10.0",
+    "laravel/framework": "^10.0"
   },
   "require-dev": {
     "mockery/mockery": "^1.6",
+    "orchestra/testbench": "dev-develop",
     "overtrue/phplint": "^9.0",
     "phpmd/phpmd": "^2.13",
     "phpstan/phpstan": "^1.10",
@@ -32,6 +38,16 @@
   },
   "config": {
     "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LaravelCommandBus\\Providers\\CommandBusProvider"
+      ],
+      "aliases": {
+        "CommandBus": "LaravelCommandBus\\Facade\\CommandBus"
+      }
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true

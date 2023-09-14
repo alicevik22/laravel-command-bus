@@ -1,6 +1,6 @@
 services:
   php-xdebug:
-    image: project-php
+    image: laravel-command-bus-php
     build:
       dockerfile: .docker/Dockerfile
       context: .
@@ -31,7 +31,7 @@ services:
     entrypoint: "vendor/bin/phpunit"
 
   phpunit-coverage:
-    image: project-php
+    image: laravel-command-bus-php
     volumes_from:
       - php-xdebug
     extra_hosts:
