@@ -15,10 +15,10 @@ class CommandBusDispatchingTest extends TestCase
     {
         $this->app->bind(
             CommandBusHandlerInterface::class,
-            function() {
+            function () {
                 return new CommandBusHandler(
                     [
-                        TestCommand1::class => TestCommandHandler::class,
+                        TestCommand1::class => TestCommandHandler1::class,
                     ]
                 );
             }
@@ -37,5 +37,23 @@ class CommandBusDispatchingTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         CommandBus::dispatch(new TestCommand2('hello'));
+    }
+
+    public function testExceptionIsThrownWhenCommandHandlerIsNotCallable(): void
+    {
+        $this->app->bind(
+            CommandBusHandlerInterface::class,
+            function () {
+                return new CommandBusHandler(
+                    [
+                        TestCommand1::class => TestCommandHandler2::class,
+                    ]
+                );
+            }
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+
+        CommandBus::dispatch(new TestCommand1('hello'));
     }
 }
